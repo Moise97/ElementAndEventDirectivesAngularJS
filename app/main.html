@@ -1,7 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="directives">
     <head>
+        <title>Directives</title>
+        <script src="../node_modules/angular/angular.js"></script>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.css">
+
+        <script src="/app/controllers/main.controller.js"></script>
+        <script src="/app/services/server-service.js"></script>
     </head>
+
     <body>
+        <div id='todoPanel' class="panel" ng-controller='mainCtrl'>
+                <h3 class="panel-header">To Do List</h3>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Action</th>
+                            <th>Done</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in dates">
+                            <td>{{$index + 1}}</td>
+                            <td>{{item.action}}</td>
+                            <td>{{item.complete}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
     </body>
 </html>
