@@ -12,8 +12,14 @@ angular.module("directives",[])
         $scope.buttonNames = ['Red', 'Green', 'Blue'];
 
         $scope.settings = {
-            Rows: "Red",
-            Columns: "Green"
+            rowColor: "Blue",
+            columnColor: "Green"
         };
+
+        $scope.handleEvent = function(event) {
+            console.log(event.type);
+            $scope.settings.columnColor = event.type == "mouseover" ? "Green" : "Blue";
+        }
+
     }]
 )

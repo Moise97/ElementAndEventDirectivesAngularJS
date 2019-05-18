@@ -9,9 +9,9 @@
         <script src="/app/controllers/main.controller.js"></script>
         <script src="/app/services/server-service.js"></script>
         <style>
-            tr.Red { background-color: lightcoral; }
-            tr.Green { background-color: lightgreen; }
-            tr.Blue { background-color: lightblue; }
+            .Red { background-color: lightcoral; }
+            .Green { background-color: lightgreen; }
+            .Blue { background-color: lightblue; }
         </style>
     </head>
 
@@ -19,16 +19,12 @@
         <div id='todoPanel' class="panel" ng-controller='mainCtrl'>
                 <h3 class="panel-header">To Do List</h3>
 
-                <div class="row well">
-                    <div class="col-xs-6" ng-repeat="(key, val) in settings">
-                        <h4>{{key}}</h4>
-                        <div class="radio" ng-repeat="button in buttonNames">
-                            <label>
-                                <input type="radio" ng-model="settings[key]"
-                                    value="{{button}}">{{button}}
-                            </label>
-                        </div>
-                    </div>
+                <div class="well">
+                    <span ng-repeat="button in buttonNames">
+                        <button class="btn btn-info" ng-click="settings.rowColor = button">
+                            {{button}}
+                        </button>
+                    </span>
                 </div>
 
                 <table class="table table-stripped">
@@ -40,11 +36,11 @@
                         </tr>
                     </thead>
                     <tbody> 
-                        <tr ng-repeat="item in dates" ng-class-even="settings.Rows" 
-                                                        ng-class-odd="settings.Columns">  
+                        <tr ng-repeat="item in dates" ng-class="settings.rowColor"
+                            ng-mouseenter="handleEvent($event)" ng-mouseleave="handleEvent($event)">  
                             <td>{{$index + 1}}</td>
                             <td>{{item.action}}</td>
-                            <td>{{item.complete}}</td>
+                            <td ng-class="settings.columnColor">{{item.complete}}</td>
                         </tr>
                     </tbody>
                 </table>
