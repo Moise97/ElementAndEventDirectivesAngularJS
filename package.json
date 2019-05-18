@@ -1,0 +1,26 @@
+{
+  "name": "elementandeventdirectivesangularjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moise97/ElementAndEventDirectivesAngularJS.git"
+  },
+  "author": "Solcan Moise",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moise97/ElementAndEventDirectivesAngularJS/issues"
+  },
+  "homepage": "https://github.com/Moise97/ElementAndEventDirectivesAngularJS#readme",
+  "dependencies": {
+    "angular": "^1.7.8",
+    "bootstrap": "^3.0.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  }
+}
