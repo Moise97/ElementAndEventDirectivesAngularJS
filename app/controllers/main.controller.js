@@ -7,7 +7,13 @@ angular.module("directives",[])
             })
             .catch(error => {
                 throw new MainCtrlDataException(error);
-            })
-        }
-    ]
+            });
+
+        $scope.buttonNames = ['Red', 'Green', 'Blue'];
+
+        $scope.settings = {
+            Rows: "Red",
+            Columns: "Green"
+        };
+    }]
 )

@@ -9,13 +9,27 @@
         <script src="/app/controllers/main.controller.js"></script>
         <script src="/app/services/server-service.js"></script>
         <style>
-            td > *:first-child { font-weight: bold }
+            tr.Red { background-color: lightcoral; }
+            tr.Green { background-color: lightgreen; }
+            tr.Blue { background-color: lightblue; }
         </style>
     </head>
 
     <body>
         <div id='todoPanel' class="panel" ng-controller='mainCtrl'>
                 <h3 class="panel-header">To Do List</h3>
+
+                <div class="row well">
+                    <div class="col-xs-6" ng-repeat="(key, val) in settings">
+                        <h4>{{key}}</h4>
+                        <div class="radio" ng-repeat="button in buttonNames">
+                            <label>
+                                <input type="radio" ng-model="settings[key]"
+                                    value="{{button}}">{{button}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
                 <table class="table table-stripped">
                     <thead>
@@ -25,12 +39,13 @@
                             <th>Done</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        // using filter in ng-repeat instead of ng-hide or ng-if 
-                        <tr ng-repeat="item in dates | filter: {complete: 'false'}">  
+                    <tbody> 
+                        <tr ng-repeat="item in dates" ng-class="settings.Rows">  
                             <td>{{$index + 1}}</td>
                             <td>{{item.action}}</td>
-                            <td>{{item.complete}}</td>
+                            <td ng-style="{'background-color': settings.Columns}">
+                                {{item.complete}}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
