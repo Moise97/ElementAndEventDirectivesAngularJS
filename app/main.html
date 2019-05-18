@@ -8,11 +8,21 @@
 
         <script src="/app/controllers/main.controller.js"></script>
         <script src="/app/services/server-service.js"></script>
+        <style>
+            td > *:first-child { font-weight: bold }
+        </style>
     </head>
 
     <body>
         <div id='todoPanel' class="panel" ng-controller='mainCtrl'>
                 <h3 class="panel-header">To Do List</h3>
+
+                <div class="checkbox well">
+                    <label>
+                        <input type="checkbox" ng-model="dates[2].complete">
+                        Item 3 is complete
+                    </label>
+                </div>
 
                 <table class="table">
                     <thead>
@@ -26,7 +36,10 @@
                         <tr ng-repeat="item in dates">
                             <td>{{$index + 1}}</td>
                             <td>{{item.action}}</td>
-                            <td>{{item.complete}}</td>
+                            <td>
+                                <span ng-hide=item.complete>(Incomplete)</span>
+                                <span ng-show=item.complete>(Done)</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
